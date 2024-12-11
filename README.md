@@ -42,7 +42,7 @@ ssh xxx@robot.local
 
 pass: @@@@@@
 
-### EN LA RASPI -  MICROROS
+### INTO THE RASPI -  MICROROS
 docker run -it --rm -v /dev:/dev --privileged --net=host microros/micro-ros-agent:humble serial --dev /dev/ttyACM0 -b 115200
 
 Después conectar el micro y publicar la odometría
@@ -53,28 +53,28 @@ source install/local_setup.bash
 
 ros2 launch robot robot_base.launch.py
 
-### EN LA PC
+### INTO PC
 
-habilitar el slam:
+enable slam:
 
 ros2 launch robot robot_slam.launch.py 
 
-habilitar rviz:
+enable rviz:
 
 ros2 run rviz2 rviz2
 
-(anadir por tópico lidar y map)
+(add topic lidar y map)
 
 
-# para manejar al robot
+# manage the robot
 
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
-para instalar el servermap
+install servermap
 
 sudo apt install ros-humble-nav2-bringup 
 
-Para guardar el mapa (my_map.png / my_map.yaml)
+save the map (my_map.png / my_map.yaml)
 
 ros2 run nav2_map_server map_saver_cli -f my_map
 
