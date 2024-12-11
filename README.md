@@ -30,3 +30,37 @@ Install the necessary tools and firmware for Micro-ROS on Raspberry Pi Pico:
    rosdep install --from-paths src --ignore-src -y
    colcon build
    source install/setup.bash
+
+## Running the Jhonny5
+Robot Johnny 5
+Wifi:	xxxx
+Pas:	************
+ssh xxx@robot.local
+pass: @@@@@@
+
+### EN LA RASPI -  MICROROS
+docker run -it --rm -v /dev:/dev --privileged --net=host microros/micro-ros-agent:humble serial --dev /dev/ttyACM0 -b 115200
+
+Después conectar el micro y publicar la odometría
+cd ros2_ws
+source install/local_setup.bash 
+ros2 launch robot robot_base.launch.py
+
+### EN LA PC
+habilitar el slam:
+ros2 launch robot robot_slam.launch.py 
+
+habilitar rviz:
+ros2 run rviz2 rviz2
+(anadir por tópico lidar y map)
+
+# para manejar al robot
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+para instalar el servermap
+sudo apt install ros-humble-nav2-bringup 
+
+Para guardar el mapa (my_map.png / my_map.yaml)
+ros2 run nav2_map_server map_saver_cli -f my_map
+
+
